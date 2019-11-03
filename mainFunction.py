@@ -1,20 +1,20 @@
 #functions
 
-import TInt
-import TBool
+import Tint
+import Tbool
 import Top
 import Top2
 import Tif
 import Tvar
-import TFn
+import Tfn
 import Tapp
 import Tlet
-import TLetrec
-import TRaise
+import Tletrec
+import Traise
 import Ttry
 import Thd
 import Ttl
-import TIsempty
+import Tisempty
 
 #definitions
 import Type 
