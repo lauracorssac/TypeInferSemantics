@@ -1,5 +1,5 @@
 import mainFunction
-import types
+from Definitions.types import TYPE
 
 def t_let(environment, term):
     return TYPE.ERROR

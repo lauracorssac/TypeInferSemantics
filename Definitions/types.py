@@ -6,6 +6,6 @@ class TYPE():
     INT = "INT"
     BOOL = "BOOL"
     ERROR = "ERROR"
-    
+
     def FUNC(type_param, type_body):
         return "(" + type_param + ")" + " -> " + type_body
