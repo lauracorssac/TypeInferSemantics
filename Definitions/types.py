@@ -1,0 +1,11 @@
+# ideia de centralizar todas os tipos aqui. 
+# Para no retorno das funções ao invés de por exemplo "INT"
+# colocar "TYPE.INT"
+
+class TYPE():
+    INT = "INT"
+    BOOL = "BOOL"
+    ERROR = "ERROR"
+
+    def FUNC(type_param, type_body):
+        return "(" + type_param + ")" + " -> " + type_body
