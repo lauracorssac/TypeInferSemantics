@@ -1,10 +1,7 @@
-#functions
-
-import type_rules
-
-#definitions
-import Type 
-
+import Functions.types
+import collections
 
 def main_function(environment, term):
-  return Type.Error
+    return TYPE.ERROR
+
+main_function("", "")
