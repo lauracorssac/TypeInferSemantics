@@ -1,11 +1,13 @@
 #import mainFunction
 from Definitions.types import TYPE
 
-# Nodo esperado
+# Expected Node
 # {
 #   description: "qqr coisa",
 #   elements: { "x" : nome_var, "T", "TYPE.INT", "e1": nodo_1, "e2" : nodo_2 }
 # }
+
+# TODO: - Tirar esse mock da main_function
 
 def main_function(environment, node):
     return environment[node["description"]]
