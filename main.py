@@ -6,4 +6,6 @@ from Functions.Tletrec import *
 def infer_type(node, environment):
     return TYPE.ERROR
 
-infer_type("", "")
+
+if __name__ == "__main__":
+    infer_type(None,{})
