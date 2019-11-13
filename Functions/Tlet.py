@@ -7,7 +7,7 @@ from Definitions.types import TYPE
 # }
 
 def t_let(environment, node):
-    from mainFunction import main_function
+    from main import infer_type
     if environment and node and "elements" in node:
         elements = node["elements"]
 
@@ -17,8 +17,8 @@ def t_let(environment, node):
             e1 = elements["e1"]
             e2 = elements["e2"]
 
-            if main_function(environment, e1) == param_type:
+            if infer_type(environment, e1) == param_type:
                 environment[param] = param_type
-                return main_function(environment, e2)
+                return infer_type(environment, e2)
 
     return TYPE.ERROR

@@ -7,16 +7,16 @@ python3 -m Tests.test_tlet
 
 
 Observações:
-Na hora de definir uma função que é chamada pela main_function e que por sua vez também chama a main_function, colocar: from mainFunction import main_function dentro da definição da função!!
+Na hora de definir uma função que é chamada pela infer_type e que por sua vez também chama a infer_type, colocar: from main import infer_type dentro da definição da função!!
 
-E não esquecer de acrescentar um import no arquivo mainFunction, como por exemplo:
+E não esquecer de acrescentar um import no arquivo main, como por exemplo:
 
 from Functions.Tletrec import *
 
 Para rodar:
 
-python3 mainFunction
+python3 main
 
-Pra rodar outro arquivo que não esteja no mesmo nível da mainFunction:
+Pra rodar outro arquivo que não esteja no mesmo nível da main:
 
 python3 -m Pasta.arquivo

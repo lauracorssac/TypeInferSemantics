@@ -1,5 +1,8 @@
-from Definitions.types import TYPE
-from Functions.Tvar import t_var
+import sys
+sys.path.insert(1, '../')
+
+from Functions.Tvar import t_var as t_var
+from Definitions.types import TYPE as TYPE
 
 node_x = { "description": "x"}
 node_y = { "description": "y"}

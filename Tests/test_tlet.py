@@ -1,3 +1,6 @@
+import sys
+sys.path.insert(1, '../')
+
 from Definitions.types import TYPE
 from Functions.Tlet import t_let
 

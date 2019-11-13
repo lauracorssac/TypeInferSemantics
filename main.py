@@ -3,7 +3,7 @@ from Definitions.types import TYPE
 import collections
 from Functions.Tletrec import *
 
-def main_function(environment, term):
+def infer_type(node, environment):
     return TYPE.ERROR
 
-main_function("", "")
+infer_type("", "")
