@@ -3,7 +3,9 @@ from Definitions.types import TYPE
 import collections
 from Functions.Tletrec import *
 
-def main_function(environment, term):
+def infer_type(node, environment):
     return TYPE.ERROR
 
-main_function("", "")
+
+if __name__ == "__main__":
+    infer_type(None,{})

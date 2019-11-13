@@ -1,4 +1,4 @@
-import mainFunction
+import main
 from Definitions.types import TYPE
 
 def t_bool(environment, term):
