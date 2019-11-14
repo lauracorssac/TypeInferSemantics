@@ -1,4 +1,3 @@
-import main
 from Definitions.types import TYPE
 
 #node

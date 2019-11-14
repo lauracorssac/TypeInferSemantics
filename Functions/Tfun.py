@@ -1,4 +1,3 @@
-import main
 from Definitions.types import TYPE
 
 # Input example:
@@ -21,9 +20,10 @@ from Definitions.types import TYPE
 # Return:
 #   (TYPE.INT) -> (TYPE.INT)
 #
+
 def t_fun(environment, node):
     from main import infer_type
-    
+
     parameter = node["elements"]["e1"]
     parameter_type = node["elements"]["e2"]
 
