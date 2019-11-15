@@ -34,16 +34,18 @@ class TestTLet:
             }
         }
         assert t_let({}, node_main) == TYPE.INT
+        assert t_let(None, node_main) == TYPE.INT
         assert t_let({"x": TYPE.BOOL}, node_main) == TYPE.INT
 
     # Invalid Inputs
     def test_t_let_1(self):
         assert t_let({"x": TYPE.INT}, {}) == TYPE.ERROR
         assert t_let({}, {"elements": {"e3": "x"}}) == TYPE.ERROR
+        assert t_let({"x": TYPE.INT}, None) == TYPE.ERROR
 
     # Input: let x: bool = "2" in x
     # Output: TYPE.ERROR (2 not type bool)
-    def test_t_let_2(self):
+    def test_t_let_errors(self):
         node_1 = {
             "description": "tint",
             "elements": {
