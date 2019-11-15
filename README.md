@@ -8,3 +8,8 @@ python3 main.py
 Para rodar os testes:
 
 pip install pytest && pytes
+
+Exemplo execução dos testes da tfun
+
+cd Tests
+pytest -v test_tfun.py
