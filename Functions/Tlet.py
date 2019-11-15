@@ -40,6 +40,8 @@ def t_let(environment, node):
         return TYPE.ERROR
 
     if infer_type(environment, e1) == param_type:
+        if not environment:
+            environment = {}
         environment[param] = param_type
         return infer_type(environment, e2)
 
