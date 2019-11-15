@@ -3,10 +3,14 @@ from Definitions.types import TYPE
 import collections
 from Functions.Tfun import *
 from Functions.Tvar import *
+from Functions.Tlet import *
+from Functions.Tint import *
 
 rules_dictionary = {
     'tfun': t_fun,
-    'tvar': t_var
+    'tvar': t_var,
+    'tlet': t_let,
+    'tint': t_int
 }
 
 def infer_type(environment, node):
@@ -15,18 +19,4 @@ def infer_type(environment, node):
 
 
 if __name__ == "__main__":
-    # infer_type({}, none)
-    node = {
-        "description": "tfun",
-        "elements": {
-            "e1": "x",
-            "e2": TYPE.INT,
-            "e3": {
-                "description": "tvar",
-                "elements": {
-                    "e1": "x"
-                }
-            }
-        }
-    }
-    print(infer_type({}, node))
+    infer_type({}, none)
