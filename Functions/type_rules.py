@@ -1,10 +1,10 @@
 import Functions.Tint
 import Functions.Tbool
-import Functions.Top
-import Functions.Top2
+import Functions.TopLogic
+import Functions.TopArithm
 import Functions.Tif
 import Functions.Tvar
-import Functions.Tfn
+import Functions.Tfun
 import Functions.Tapp
 import Functions.Tlet
 import Functions.Tletrec

@@ -4,74 +4,71 @@ sys.path.insert(1, '../')
 from Definitions.types import TYPE
 from Functions.Tlet import t_let
 
-node_e2 = {
-    "description": "y",
-}
+class TestTLet:
 
-node_e1 = {
-    "description": "z",
-}
+    # Input: let x: int = "2" in x
+    # Output: TYPE.INT
+    def test_t_let_0(self):
 
-node_let = {
-    "description": "let",
-    "elements": {
-        "x" : "y",
-        "T": TYPE.INT,
-        "e1": node_e1,
-        "e2" : node_e2
-    }
-}
+        node_1 = {
+            "description": "tint",
+            "elements": {
+                 "e1" : "2"
+            }
+        }
 
-# entrada let y:INT = "z" in y
+        node_2 = {
+            "description": "tvar",
+            "elements": {
+                "e1": "x"
+            }
+        }
 
-# teste sucesso
-assert(t_let({"z": TYPE.INT}, node_let) == TYPE.INT)
-# entrada tipo invalido
-assert(t_let({"z": TYPE.BOOL}, node_let) == TYPE.ERROR)
-# entrada nao declarada
-assert(t_let({}, node_let) == TYPE.ERROR)
-assert(t_let(None, node_let) == TYPE.ERROR)
-assert(t_let({"z": TYPE.BOOL}, None) == TYPE.ERROR)
+        node_main = {
+            "description": "tlet",
+            "elements": {
+                "e1": node_1,
+                "e2" : node_2,
+                "e3" : "x",
+                "e4": TYPE.INT
+            }
+        }
+        assert t_let({}, node_main) == TYPE.INT
+        assert t_let(None, node_main) == TYPE.INT
+        assert t_let({"x": TYPE.BOOL}, node_main) == TYPE.INT
 
-node_e22 = {
-    "description": "w",
-}
+    # Invalid Inputs
+    def test_t_let_1(self):
+        assert t_let({"x": TYPE.INT}, {}) == TYPE.ERROR
+        assert t_let({}, {"elements": {"e3": "x"}}) == TYPE.ERROR
+        assert t_let({"x": TYPE.INT}, None) == TYPE.ERROR
 
-node_e12 = {
-    "description": "z",
-}
+    # Input: let x: bool = "2" in x
+    # Output: TYPE.ERROR (2 not type bool)
+    def test_t_let_errors(self):
+        node_1 = {
+            "description": "tint",
+            "elements": {
+                 "e1" : "2"
+            }
+        }
 
-node_let2 = {
-    "description": "let",
-    "elements": {
-        "x" : "y",
-        "T": TYPE.INT,
-        "e1": node_e12,
-        "e2" : node_e22
-    }
-}
+        node_2 = {
+            "description": "tvar",
+            "elements": {
+                "e1": "x"
+            }
+        }
 
-# entrada let y:INT = "z" in "w"
-
-# w é um bool, entrada certa
-assert(t_let({"w": TYPE.BOOL, "z": TYPE.INT}, node_let2) == TYPE.BOOL)
-
-# w é um bool, entrada errada
-assert(t_let({"w": TYPE.BOOL, "z": TYPE.BOOL}, node_let2) == TYPE.ERROR)
-
-node_let3 = {
-    "description": "let",
-    "elements": {
-        "x" : "w",
-        "T": TYPE.BOOL,
-        "e1": node_e12,
-        "e2" : node_e22
-    }
-}
-
-# entrada let w:BOOL = "z" in "w"
-
-# entrada certa, muda dict
-assert(t_let({"w": TYPE.INT, "z": TYPE.BOOL}, node_let3) == TYPE.BOOL)
-
-print("Testes t-let passaram")
+        node_main = {
+            "description": "tlet",
+            "elements": {
+                "e1": node_1,
+                "e2" : node_2,
+                "e3" : "x",
+                "e4": TYPE.BOOL
+            }
+        }
+        assert t_let({}, node_main) == TYPE.ERROR
+        assert t_let({"x": TYPE.INT}, node_main) == TYPE.ERROR
+        assert t_let({"x": TYPE.BOOL}, node_main) == TYPE.ERROR

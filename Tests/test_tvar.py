@@ -4,20 +4,36 @@ sys.path.insert(1, '../')
 from Functions.Tvar import t_var as t_var
 from Definitions.types import TYPE as TYPE
 
-node_x = { "description": "x"}
-node_y = { "description": "y"}
-node_z = { "description": "z"}
-node_fake = {"no_desc": "y"}
+class TestTVar:
 
-assert(t_var({"x": TYPE.BOOL}, node_x) == TYPE.BOOL)
-assert(t_var({"x": TYPE.BOOL}, node_y) == TYPE.ERROR)
+    # Input:
+    #     variable: x
+    #     environment: {"x": TYPE.INT}
+    def test_t_var_happy_path(self):
 
-assert(t_var( {"z": TYPE.FUNC(TYPE.INT, TYPE.INT), "x": TYPE.BOOL}, node_y) == TYPE.ERROR)
-assert(t_var( {"z": TYPE.FUNC(TYPE.INT, TYPE.INT), "x": TYPE.BOOL}, node_x) == TYPE.BOOL)
-assert(t_var( {"z": TYPE.FUNC(TYPE.INT, TYPE.INT), "x": TYPE.BOOL}, node_z) == TYPE.FUNC(TYPE.INT, TYPE.INT))
-assert(t_var({}, node_x) == TYPE.ERROR)
-assert(t_var(None, node_x) == TYPE.ERROR)
-assert(t_var({"x": TYPE.BOOL}, node_fake) == TYPE.ERROR)
-assert(t_var({"x": TYPE.BOOL}, None) == TYPE.ERROR)
+        node_x = {
+            "description": "tvar",
+            "elements": {"e1": "x"}
+        }
+        node_y = {
+            "description": "tvar",
+            "elements": {"e1": "y"}
+        }
 
-print("testes t-var passaram")
+        assert t_var({"x": TYPE.INT}, node_x) == TYPE.INT
+        assert t_var({"y": TYPE.BOOL}, node_y) == TYPE.BOOL
+        assert t_var({"e1": TYPE.INT, "y": TYPE.BOOL}, node_y) == TYPE.BOOL
+
+    def test_t_var_errors(self):
+
+        node_x = {
+            "description": "tvar",
+            "elements": {"e1": "x"}
+        }
+
+        assert t_var({}, node_x) == TYPE.ERROR
+        assert t_var(None, node_x) == TYPE.ERROR
+        assert t_var(None, None) == TYPE.ERROR
+        assert t_var({"x": TYPE.INT}, None) == TYPE.ERROR
+        assert t_var({"x": TYPE.INT}, {}) == TYPE.ERROR
+        assert t_var({"y": TYPE.INT}, node_x) == TYPE.ERROR
