@@ -61,6 +61,7 @@ def t_letrec(environment, term):
 
     environment[function_name] = TYPE.FUNC(input_type, output_type)
     type_e2 = infer_type(environment, e2)
+    print("type e2", type_e2)
     environment[param_name] = input_type
     type_e1 = infer_type(environment, e1)
 
