@@ -1,7 +1,7 @@
 import sys
 sys.path.insert(1, '../')
 
-from Functions.Tint import *
+from Functions.Tbool import *
 from Definitions.types import TYPE
 
 class TestTbool:
