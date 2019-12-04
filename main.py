@@ -5,12 +5,14 @@ from Functions.Tfun import *
 from Functions.Tvar import *
 from Functions.Tlet import *
 from Functions.Tint import *
+from Functions.Tbool import *
 
 rules_dictionary = {
     'tfun': t_fun,
     'tvar': t_var,
     'tlet': t_let,
-    'tint': t_int
+    'tint': t_int,
+    'tbool': t_bool
 }
 
 def infer_type(environment, node):
