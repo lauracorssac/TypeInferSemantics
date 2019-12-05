@@ -5,6 +5,8 @@
 class TYPE():
     INT = "INT"
     BOOL = "BOOL"
+    LIST = "LIST"
+    EMPTY = "EMPTY"
     ERROR = "ERROR"
 
     @staticmethod
