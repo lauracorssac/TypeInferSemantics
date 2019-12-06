@@ -28,7 +28,7 @@ from Definitions.types import TYPE
 # }
 #
 # Return:
-#    TYPE.LIST(TYPE.INT)
+#    TYPE.LIST[TYPE.INT]
 
 
 def validParameters(environment, node):

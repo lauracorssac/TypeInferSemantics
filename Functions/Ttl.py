@@ -34,7 +34,7 @@ from Definitions.types import TYPE
 # environment = {}
 #
 # Return:
-#   TYPE.LIST(TYPE.INT)
+#   TYPE.LIST[TYPE.INT]
 
 def validParameters(environment, node):
     if node and "description" in node and "elements" in node and "e1" in node["elements"]:
@@ -47,5 +47,5 @@ def t_tl(environment, term):
         return TYPE.ERROR
 
     from main import infer_type
-    
+
     return TYPE.ERROR
