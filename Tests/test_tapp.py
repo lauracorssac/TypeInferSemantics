@@ -6,16 +6,16 @@ from Definitions.types import TYPE
 
 class TestTApp:
 
-    def test_tapp_ok(self):
+    def test_tapp_atomic_ok(self):
         node2 = {
             "description": "tfun",
             "elements": {
                 "e1": "x",
                 "e2": TYPE.INT,
                 "e3": {
-                    "description": "tvar",
+                    "description": "tbool",
                     "elements": {
-                        "e1": "x"
+                        "e1": "true"
                     }
                 }
             }
@@ -24,7 +24,7 @@ class TestTApp:
         node3 = {
             "description": "tint",
             "elements": {
-                "e1": "7"
+                "e1": 5
             }
         }
 
@@ -36,14 +36,241 @@ class TestTApp:
             }
         }
         environment = {}
-        # result, expected_parameter, received_parameter = t_app(environment, node)
 
-        # print('como')
-        # print(expected_parameter)
-        # print('ratata')
-        # print(received_parameter)
-        # print('demonio')
-        # print(result)
-        assert t_app(environment, node) == TYPE.INT
-        # assert t_fun(environment, node) == "(" + TYPE.INT + ")->" + TYPE.INT
-        # assert t_fun(environment, node) == TYPE.FUNC(TYPE.INT, TYPE.INT)
+        assert t_app(environment, node) == TYPE.BOOL
+
+    def test_tapp_parameter_functional_ok(self):
+        node2 = {
+            "description": "tfun",
+            "elements": {
+                "e1": "x",
+                "e2": TYPE.FUNC(TYPE.INT, TYPE.INT),
+                "e3": {
+                    "description": "tbool",
+                    "elements": {
+                        "e1": "true"
+                    }
+                }
+            }
+        }
+
+        node3 = {
+            "description": "tfun",
+            "elements": {
+                "e1": "x",
+                "e2": TYPE.INT,
+                "e3": {
+                    "description": "tint",
+                    "elements": {
+                        "e1": 5
+                    }
+                }
+            }
+        }
+
+        node = {
+            "description": "tapp",
+            "elements": {
+                "e1": node2,
+                "e2": node3,
+            }
+        }
+        environment = {}
+
+        assert t_app(environment, node) == TYPE.BOOL
+
+    def test_tapp_output_functional_ok(self):
+        node2 = {
+            "description": "tfun",
+            "elements": {
+                "e1": "x",
+                "e2": TYPE.INT,
+                "e3": {
+                    "description": "tfun",
+                    "elements": {
+                        "e1": "x",
+                        "e2": TYPE.BOOL,
+                        "e3": {
+                            "description": "tbool",
+                            "elements": {
+                                "e1": "true"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        node3 = {
+            "description": "tint",
+            "elements": {
+                "e1": 5
+            }
+        }
+
+        node = {
+            "description": "tapp",
+            "elements": {
+                "e1": node2,
+                "e2": node3,
+            }
+        }
+        environment = {}
+
+        assert t_app(environment, node) == TYPE.FUNC(TYPE.BOOL, TYPE.BOOL)
+
+    def test_tapp_full_functional_ok(self):
+        node2 = {
+            "description": "tfun",
+            "elements": {
+                "e1": "x",
+                "e2": TYPE.FUNC(TYPE.BOOL, TYPE.INT),
+                "e3": {
+                    "description": "tfun",
+                    "elements": {
+                        "e1": "x",
+                        "e2": TYPE.INT,
+                        "e3": {
+                            "description": "tint",
+                            "elements": {
+                                "e1": 5
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        node3 = {
+            "description": "tfun",
+            "elements": {
+                "e1": "x",
+                "e2": TYPE.BOOL,
+                "e3": {
+                    "description": "tint",
+                    "elements": {
+                        "e1": 5
+                    }
+                }
+            }
+        }
+
+        node = {
+            "description": "tapp",
+            "elements": {
+                "e1": node2,
+                "e2": node3,
+            }
+        }
+        environment = {}
+
+        assert t_app(environment, node) == TYPE.FUNC(TYPE.INT, TYPE.INT)
+
+    def test_tapp_chaotic_output_functional_ok(self):
+        node2 = {
+            "description": "tfun",
+            "elements": {
+                "e1": "x",
+                "e2": TYPE.FUNC(TYPE.BOOL, TYPE.INT),
+                "e3": {
+                    "description": "tfun",
+                    "elements": {
+                        "e1": "x",
+                        "e2": TYPE.FUNC(TYPE.INT, TYPE.INT),
+                        "e3": {
+                            "description": "tfun",
+                            "elements": {
+                                "e1": "x",
+                                "e2": TYPE.FUNC(TYPE.BOOL, TYPE.BOOL),
+                                "e3": {
+                                    "description": "tbool",
+                                    "elements": {
+                                        "e1": "true"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        node3 = {
+            "description": "tfun",
+            "elements": {
+                "e1": "x",
+                "e2": TYPE.BOOL,
+                "e3": {
+                    "description": "tint",
+                    "elements": {
+                        "e1": 5
+                    }
+                }
+            }
+        }
+
+        node = {
+            "description": "tapp",
+            "elements": {
+                "e1": node2,
+                "e2": node3,
+            }
+        }
+        environment = {}
+
+        assert t_app(environment, node) == TYPE.FUNC(TYPE.FUNC(TYPE.INT, TYPE.INT),TYPE.FUNC(TYPE.FUNC(TYPE.BOOL, TYPE.BOOL),TYPE.BOOL))
+
+
+    def test_tapp_chaotic_paramater_functional_ok(self):
+        node2 = {
+            "description": "tfun",
+            "elements": {
+                "e1": "x",
+                "e2": TYPE.FUNC(TYPE.FUNC(TYPE.BOOL, TYPE.INT), TYPE.FUNC(TYPE.FUNC(TYPE.INT, TYPE.INT), (TYPE.FUNC(TYPE.FUNC(TYPE.BOOL, TYPE.BOOL), TYPE.INT)))),
+                "e3": {
+                    "description": "tbool",
+                    "elements": {
+                        "e1": "true"
+                    }
+                }
+            }
+        }
+
+        node3 = {
+            "description": "tfun",
+            "elements": {
+                "e1": "x",
+                "e2": TYPE.FUNC(TYPE.BOOL, TYPE.INT),
+                "e3": {
+                    "description": "tfun",
+                    "elements": {
+                        "e1": "x",
+                        "e2": TYPE.FUNC(TYPE.INT, TYPE.INT),
+                        "e3": {
+                            "description": "tfun",
+                            "elements": {
+                                "e1": "x",
+                                "e2": TYPE.FUNC(TYPE.BOOL, TYPE.BOOL),
+                                "e3": {
+                                    "description": "tint",
+                                    "elements": {
+                                        "e1": "5"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        node = {
+            "description": "tapp",
+            "elements": {
+                "e1": node2,
+                "e2": node3,
+            }
+        }
+        environment = {}
+
+        assert t_app(environment, node) == TYPE.BOOL

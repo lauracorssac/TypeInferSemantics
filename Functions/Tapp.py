@@ -11,11 +11,7 @@ def validParameters(environment, node):
 def get_expected_parameter(term):
     lastIndex = 0
     pilha = []
-    # print(term)
-    # print()
-    # changing index and printing separately
     for count,element in enumerate(term):
-        # print (count,element)
         if (element == '('):
             pilha.append(element)
         if(element == ')'):
@@ -27,7 +23,6 @@ def get_expected_parameter(term):
             else:
                 raise Exception()
 
-    # print('last index = ', lastIndex)
     expected_parameter = term[1:lastIndex]
     return expected_parameter, lastIndex
 
@@ -47,5 +42,4 @@ def t_app(environment, node):
     if expected_parameter == received_parameter:
         result = apply_parameter(term, ending_index)
 
-    # return result, expected_parameter, received_parameter
     return result
