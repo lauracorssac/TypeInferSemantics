@@ -36,6 +36,9 @@ def t_fun(environment, node):
     parameter = node["elements"]["e1"]
     parameter_type = node["elements"]["e2"]
 
+    if parameter_type != TYPE.BOOL and parameter_type != TYPE.INT:
+        parameter_type = infer_type(environment, parameter_type)
+
     environment[parameter] = parameter_type
 
     body_type = infer_type(environment, node["elements"]["e3"])
