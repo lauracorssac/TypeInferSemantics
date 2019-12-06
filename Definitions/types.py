@@ -10,4 +10,4 @@ class TYPE():
 
     @staticmethod
     def FUNC(type_param, type_body):
-        return "(" + type_param + ")" + " -> " + type_body
+        return "(" + type_param + ")" + "->" + type_body
