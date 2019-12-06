@@ -21,5 +21,5 @@ class TestTFun:
             }
         }
         environment = {}
-        assert t_fun(environment, node) == "(" + TYPE.INT + ") -> " + TYPE.INT
+        assert t_fun(environment, node) == "(" + TYPE.INT + ")->" + TYPE.INT
         assert t_fun(environment, node) == TYPE.FUNC(TYPE.INT, TYPE.INT)
