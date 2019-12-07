@@ -15,4 +15,4 @@ class TYPE():
 
     @staticmethod
     def LIST(type_list):
-        return "LIST." + type_list +
+        return "LIST." + type_list
