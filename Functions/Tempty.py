@@ -32,6 +32,6 @@ def t_empty(environment, term):
     if value is "empty": # it is "every type" type. Set it as the type of the list
                          # Only determines something if the list itself is empty
                          # but them the list can be a list of anything
-        return TYPE.EMPTY
+        return TYPE.LIST(TYPE.UNDEFINED)
     else:
         return TYPE.ERROR

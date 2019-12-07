@@ -7,7 +7,6 @@ class TYPE():
     BOOL = "BOOL"
     ERROR = "ERROR"
     UNDEFINED = "UNDEF"
-    EMPTY = "EMPTY"
 
     @staticmethod
     def FUNC(type_param, type_body):

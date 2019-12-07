@@ -37,6 +37,12 @@ from Definitions.types import TYPE
 #   TYPE.BOOL
 #
 
+def isList(expression):
+    if TYPE.LIST('') in expression:
+        return True
+    else:
+        return False
+
 def validParameters(environment, node):
     if node and "description" in node and "elements" in node and "e1" in node["elements"]:
         return True
@@ -54,7 +60,7 @@ def t_isempty(environment, term):
     # Tlist makes sure that the list is possible (if not, TYPE.ERROR is the return)
     # Tlist makes sure that e1 cant be the only one empty
 
-    if TYPE.LIST('') in list_type:
+    if isList(list_type):
         return TYPE.BOOL
     else:
         return TYPE.ERROR

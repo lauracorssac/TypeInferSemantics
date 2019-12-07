@@ -36,6 +36,12 @@ from Definitions.types import TYPE
 # Return:
 #   TYPE.INT
 
+def isList(expression):
+    if TYPE.LIST('') in expression:
+        return True
+    else:
+        return False
+
 def validParameters(environment, node):
     if node and "description" in node and "elements" in node and "e1" in node["elements"]:
         return True
@@ -49,7 +55,7 @@ def t_hd(environment, term):
     from main import infer_type
     list = node["elements"]["e1"]
     list_type = infer_type(environment, list)
-    if TYPE.LIST('') in list_type:
+    if isList(list_type):
         _, type = list_type.split(".", 1)
         return type
 
