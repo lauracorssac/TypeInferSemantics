@@ -42,7 +42,7 @@ def validParameters(environment, node):
     else:
         return False
 
-def t_list(environment, node):
+def t_cons(environment, node):
     if not validParameters(environment, node):
         return TYPE.ERROR
 

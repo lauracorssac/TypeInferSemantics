@@ -48,7 +48,7 @@ def validParameters(environment, node):
     else:
         return False
 
-def t_hd(environment, term):
+def t_hd(environment, node):
     if not validParameters(environment, node):
         return TYPE.ERROR
 

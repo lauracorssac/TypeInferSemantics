@@ -49,7 +49,7 @@ def validParameters(environment, node):
     else:
         return False
 
-def t_isempty(environment, term):
+def t_isempty(environment, node):
     if not validParameters(environment, node):
         return TYPE.ERROR
 

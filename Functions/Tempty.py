@@ -21,13 +21,13 @@ def validParameters(environment, node):
     else:
         return False
 
-def t_empty(environment, term):
+def t_empty(environment, node):
     if not validParameters(environment, node):
         return TYPE.ERROR
 
     from main import infer_type
 
-    value = int(node['elements']['e1'])
+    value = node['elements']['e1']
 
     if value is "empty": # it is "every type" type. Set it as the type of the list
                          # Only determines something if the list itself is empty
