@@ -36,6 +36,10 @@ from Definitions.types import TYPE
 # Return:
 #   TYPE.INT
 
+def innerType(list):
+    _, inner_type = list.split(".", 1)
+    return inner_type
+
 def isList(expression):
     if TYPE.LIST('') in expression:
         return True
@@ -56,8 +60,8 @@ def t_hd(environment, node):
     list = node["elements"]["e1"]
     list_type = infer_type(environment, list)
     if isList(list_type):
-        _, type = list_type.split(".", 1)
-        return type
+        list_of = innerType(list_type)
+        return list_of
 
     else:
         return TYPE.ERROR

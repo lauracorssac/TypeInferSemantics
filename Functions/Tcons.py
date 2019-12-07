@@ -30,6 +30,10 @@ from Definitions.types import TYPE
 # Return:
 #    TYPE.LIST(TYPE.INT)
 
+def innerType(list):
+    _, inner_type = list.split(".", 1)
+    return inner_type
+
 def isList(expression):
     if TYPE.LIST('') in expression:
         return True
@@ -53,12 +57,12 @@ def t_cons(environment, node):
     new_type = infer_type(environment, new)
 
     if isList(list_type): # consider case that is cons to a empty list!
-        _, type = list_type.split(".", 1)
+        list_of = innerType(list_type)
 
-        if type == new_type: # both are undefined (cons undef empty) or tail not empty
+        if list_of == new_type: # both are undefined (cons undef empty) or tail not empty
             return list_type
 
-        elif type == TYPE.UNDEFINED: # tail is empty but head is defined
+        elif list_of == TYPE.UNDEFINED: # tail is empty but head is defined
             return TYPE.LIST(new_type)
 
         else:
