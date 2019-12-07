@@ -30,7 +30,7 @@ class TestTint:
         node = {
             "description": "tempty",
             "elements": {
-                "e1": "true"
+                "e1": "1"
             }
         }
         environment = {}

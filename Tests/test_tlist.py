@@ -74,3 +74,30 @@ class TestTint:
         }
         environment = {}
         assert t_list(environment, node) == TYPE.ERROR
+
+
+    def test_tlist_error_2types(self):
+        node = {
+            "description": "tlist",
+            "elements": {
+                "e1" : {
+                    "description": "tint",
+                    "elements": {"e1": "1"}
+                },
+                "e2" : {
+                    "description": "tlist",
+                    "elements": {
+                        "e1": {
+                            "description": "tbool",
+                            "elements": {"e1": "true"}
+                        },
+                        "e2": {
+                            "description": "tempty",
+                            "elements": {"e1": "empty"}
+                        }
+                    }
+                }
+            }
+        }
+        environment = {}
+        assert t_list(environment, node) == TYPE.ERROR

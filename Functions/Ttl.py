@@ -5,7 +5,7 @@ from Definitions.types import TYPE
 # isempty [1, 2]
 #
 # node = {
-#   "description": "thd"
+#   "description": "ttl"
 #   "elements": {
 #        "e1": {
 #            "description": "tlist",
