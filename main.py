@@ -12,6 +12,7 @@ from Functions.Tempty import *
 from Functions.Thd import *
 from Functions.Tcons import *
 from Functions.Ttl import *
+from Functions.Tisempty import *
 
 rules_dictionary = {
     'tfun': t_fun,
@@ -24,7 +25,8 @@ rules_dictionary = {
     'tempty': t_empty,
     'thd': t_hd,
     'tcons': t_cons,
-    'ttl': t_tl
+    'ttl': t_tl,
+    'tisempty': t_isempty
 }
 
 def infer_type(environment, node):
