@@ -39,7 +39,7 @@ def t_app(environment, node):
     term = infer_type(environment, node["elements"]["e1"])
     expected_parameter, ending_index = get_expected_parameter(term)
     received_parameter = infer_type(environment, node["elements"]["e2"])
-    if expected_parameter == received_parameter:
+    if expected_parameter == received_parameter or received_parameter ==  TYPE.UNDEFINED:
         result = apply_parameter(term, ending_index)
 
     return result
