@@ -34,7 +34,7 @@ from Definitions.types import TYPE
 # environment = {}
 #
 # Return:
-#   TYPE.LIST[TYPE.INT]
+#   TYPE.LIST(TYPE.INT)
 
 def validParameters(environment, node):
     if node and "description" in node and "elements" in node and "e1" in node["elements"]:
@@ -47,5 +47,10 @@ def t_tl(environment, term):
         return TYPE.ERROR
 
     from main import infer_type
+    list = node["elements"]["e1"]
+    list_type = infer_type(environment, list)
+    if TYPE.LIST('') in list_type: # já validada no infer_type da lista!
+        return list_type # nao tem tipo EMPTY!, se é empty dá o tipo da lista msmo
 
-    return TYPE.ERROR
+    else:
+        return TYPE.ERROR

@@ -2,10 +2,10 @@ from Definitions.types import TYPE
 
 # Input example:
 #
-# [1, 2]
+# cons 1 [2]
 #
 # node = {
-#     "description": "tlist",
+#     "description": "tcons",
 #     "elements": {
 #         "e1" : {
 #             "description": "tint",
@@ -42,9 +42,15 @@ def t_list(environment, node):
         return TYPE.ERROR
 
     from main import infer_type
-    # go from the inside out to find type, if consistent, put TYPE.LIST(...)
-    # around and build it... check if everything is the same type... hard and
-    # trick part (check cap. 22)
-    # if list is empty type of list is...? TYPE.LIST(TYPE.EMPTY)?
-
-    return TYPE.ERROR
+    new = node["elements"]["e1"]
+    list = node["elements"]["e2"]
+    new_type = infer_type(environment, new)
+    list_type = infer_type(environment, list)
+    if TYPE.LIST('') in list_type:
+        _, type = list_type.split(".", 1)
+        if type == new_type:
+            return list_type
+        else:
+            return TYPE.ERROR
+    else:
+        return TYPE.ERROR

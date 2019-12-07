@@ -29,7 +29,7 @@ def t_empty(environment, term):
 
     value = int(node['elements']['e1'])
 
-    if value is "empty":
+    if value is "empty": # vira coringa pra acompanhar tipo, EMPTY é tipo da lista
         return TYPE.EMPTY
     else:
         return TYPE.ERROR

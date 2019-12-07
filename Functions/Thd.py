@@ -47,5 +47,11 @@ def t_hd(environment, term):
         return TYPE.ERROR
 
     from main import infer_type
+    list = node["elements"]["e1"]
+    list_type = infer_type(environment, list)
+    if TYPE.LIST('') in list_type:
+        _, type = list_type.split(".", 1)
+        return type
 
-    return TYPE.ERROR
+    else:
+        return TYPE.ERROR
