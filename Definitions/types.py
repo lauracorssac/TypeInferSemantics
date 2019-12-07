@@ -5,8 +5,9 @@
 class TYPE():
     INT = "INT"
     BOOL = "BOOL"
-    EMPTY = "EMPTY"
     ERROR = "ERROR"
+    UNDEFINED = "UNDEF"
+    EMPTY = "EMPTY"
 
     @staticmethod
     def FUNC(type_param, type_body):
@@ -14,4 +15,4 @@ class TYPE():
 
     @staticmethod
     def LIST(type_list):
-        return "LIST." + type_list + 
+        return "LIST." + type_list +
