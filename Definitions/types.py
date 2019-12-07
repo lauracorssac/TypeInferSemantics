@@ -7,7 +7,12 @@ class TYPE():
     BOOL = "BOOL"
     ERROR = "ERROR"
     UNDEFINED = "UNDEF"
+    EMPTY = "EMPTY"
 
     @staticmethod
     def FUNC(type_param, type_body):
         return "(" + type_param + ")" + " -> " + type_body
+
+    @staticmethod
+    def LIST(type_list):
+        return "LIST." + type_list
