@@ -9,6 +9,9 @@ from Functions.Tbool import *
 from Functions.Tapp import *
 from Functions.Tlist import *
 from Functions.Tempty import *
+from Functions.TopArithm import *
+from Functions.TopLogic import *
+from Functions.Tif import *
 
 rules_dictionary = {
     'tfun': t_fun,
@@ -19,6 +22,9 @@ rules_dictionary = {
     'tapp': t_app,
     'tlist': t_list,
     'tempty': t_empty
+    'tarithm': t_arithm,
+    'tlogic': t_logic,
+    'tif': t_if
 }
 
 def infer_type(environment, node):
