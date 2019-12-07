@@ -11,6 +11,7 @@ from Functions.Tlist import *
 from Functions.Tempty import *
 from Functions.Thd import *
 from Functions.Tcons import *
+from Functions.Ttl import *
 
 rules_dictionary = {
     'tfun': t_fun,
@@ -22,7 +23,8 @@ rules_dictionary = {
     'tlist': t_list,
     'tempty': t_empty,
     'thd': t_hd,
-    'tcons': t_cons
+    'tcons': t_cons,
+    'ttl': t_tl
 }
 
 def infer_type(environment, node):
