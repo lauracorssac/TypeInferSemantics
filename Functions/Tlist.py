@@ -58,8 +58,10 @@ def t_list(environment, node):
 
         if head_type == empty and tail_type == empty:
             return empty
-        elif head_type == list_type:
+        elif (head_type == list_type):
             return tail_type
+        elif head_type != empty and list_type == TYPE.UNDEFINED:
+            return TYPE.LIST(head_type)
         else:
             return TYPE.ERROR
 
