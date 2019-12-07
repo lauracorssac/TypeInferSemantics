@@ -1,7 +1,7 @@
 import sys
 sys.path.insert(1, '../')
 
-from Functions.TLogic import *
+from Functions.TopLogic import *
 from Definitions.types import TYPE
 
 class TestTLogic:

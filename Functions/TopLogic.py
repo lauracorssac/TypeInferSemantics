@@ -50,5 +50,7 @@ def t_logic(environment, node):
     if (tipo1 == TYPE.INT) and (tipo2 == TYPE.INT):
       if (node["elements"]["e3"] == ">") or (node["elements"]["e3"] == "<") or (node["elements"]["e3"] == "==") or (node["elements"]["e3"] == "=<") or (node["elements"]["e3"] == ">="):
         return TYPE.BOOL
+      else:
+        return TYPE.ERROR        
     else:
       return TYPE.ERROR

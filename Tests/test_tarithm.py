@@ -1,7 +1,7 @@
 import sys
 sys.path.insert(1, '../')
 
-from Functions.TArithm import *
+from Functions.TopArithm import *
 from Definitions.types import TYPE
 
 class TestTArithm:

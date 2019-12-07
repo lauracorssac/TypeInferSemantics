@@ -22,10 +22,12 @@ def validParameters(environment, node):
         return False
 
 def t_bool(environment, node):
+    if not validParameters(environment, node):
+        return TYPE.ERROR
+
+    from main import infer_type
 
     word = node['elements']['e1'].lower()
-
-    print(word)
 
     if (word == "true") or (word == "false"):
         return TYPE.BOOL
