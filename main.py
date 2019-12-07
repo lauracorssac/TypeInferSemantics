@@ -7,6 +7,8 @@ from Functions.Tlet import *
 from Functions.Tint import *
 from Functions.Tbool import *
 from Functions.Tapp import *
+from Functions.TArithm import *
+from Functions.TLogic import *
 
 rules_dictionary = {
     'tfun': t_fun,
@@ -14,7 +16,9 @@ rules_dictionary = {
     'tlet': t_let,
     'tint': t_int,
     'tbool': t_bool,
-    'tapp': t_app
+    'tapp': t_app,
+    'tarithm': t_arithm,
+    'tlogic': t_logic
 }
 
 def infer_type(environment, node):
