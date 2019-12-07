@@ -30,6 +30,15 @@ from Definitions.types import TYPE
 # Return:
 #    TYPE.LIST(TYPE.INT)
 
+def innerType(list):
+    _, inner_type = list.split(".", 1)
+    return inner_type
+
+def isList(expression):
+    if TYPE.LIST('') in expression:
+        return True
+    else:
+        return False
 
 def validParameters(environment, node):
     if node and "description" in node and "elements" in node and "e1" and "e2" in node["elements"]:
@@ -37,20 +46,27 @@ def validParameters(environment, node):
     else:
         return False
 
-def t_list(environment, node):
+def t_cons(environment, node):
     if not validParameters(environment, node):
         return TYPE.ERROR
 
     from main import infer_type
     new = node["elements"]["e1"]
     list = node["elements"]["e2"]
-    new_type = infer_type(environment, new)
     list_type = infer_type(environment, list)
-    if TYPE.LIST('') in list_type:
-        _, type = list_type.split(".", 1)
-        if type == new_type:
+    new_type = infer_type(environment, new)
+
+    if isList(list_type): # consider case that is cons to a empty list!
+        list_of = innerType(list_type)
+
+        if list_of == new_type: # both are undefined (cons undef empty) or tail not empty
             return list_type
+
+        elif list_of == TYPE.UNDEFINED: # tail is empty but head is defined
+            return TYPE.LIST(new_type)
+
         else:
             return TYPE.ERROR
+
     else:
         return TYPE.ERROR

@@ -36,22 +36,32 @@ from Definitions.types import TYPE
 # Return:
 #   TYPE.INT
 
+def innerType(list):
+    _, inner_type = list.split(".", 1)
+    return inner_type
+
+def isList(expression):
+    if TYPE.LIST('') in expression:
+        return True
+    else:
+        return False
+
 def validParameters(environment, node):
     if node and "description" in node and "elements" in node and "e1" in node["elements"]:
         return True
     else:
         return False
 
-def t_hd(environment, term):
+def t_hd(environment, node):
     if not validParameters(environment, node):
         return TYPE.ERROR
 
     from main import infer_type
     list = node["elements"]["e1"]
     list_type = infer_type(environment, list)
-    if TYPE.LIST('') in list_type:
-        _, type = list_type.split(".", 1)
-        return type
+    if isList(list_type):
+        list_of = innerType(list_type)
+        return list_of
 
     else:
         return TYPE.ERROR

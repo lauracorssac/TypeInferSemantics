@@ -7,6 +7,8 @@ from Functions.Tlet import *
 from Functions.Tint import *
 from Functions.Tbool import *
 from Functions.Tapp import *
+from Functions.Tlist import *
+from Functions.Tempty import *
 from Functions.TopArithm import *
 from Functions.TopLogic import *
 from Functions.Tif import *
@@ -18,6 +20,8 @@ rules_dictionary = {
     'tint': t_int,
     'tbool': t_bool,
     'tapp': t_app,
+    'tlist': t_list,
+    'tempty': t_empty
     'tarithm': t_arithm,
     'tlogic': t_logic,
     'tif': t_if
