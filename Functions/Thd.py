@@ -2,7 +2,7 @@ from Definitions.types import TYPE
 
 # Input example:
 #
-# isempty [1, 2]
+# thd [1, 2]
 #
 # node = {
 #   "description": "thd"
