@@ -11,14 +11,14 @@ class TestTint:
             "description": "thd",
             "elements": {
                 "e1": {
-                    "description": "tlist",
+                    "description": "tcons",
                     "elements": {
                         "e1" : {
                             "description": "tbool",
                             "elements": {"e1": "true"}
                         },
                         "e2" : {
-                            "description": "tlist",
+                            "description": "tcons",
                             "elements": {
                                 "e1": {
                                     "description": "tbool",
@@ -42,14 +42,14 @@ class TestTint:
             "description": "thd",
             "elements": {
                 "e1": {
-                    "description": "tlist",
+                    "description": "tcons",
                     "elements": {
                         "e1" : {
                             "description": "tint",
                             "elements": {"e1": "1"}
                         },
                         "e2" : {
-                            "description": "tlist",
+                            "description": "tcons",
                             "elements": {
                                 "e1": {
                                     "description": "tint",
@@ -73,7 +73,7 @@ class TestTint:
           "description": "thd",
           "elements": {
                "e1": {
-                   "description": "tlist",
+                   "description": "tcons",
                    "elements": {
                        "e1" : {
                            "description": "tempty",
@@ -96,14 +96,14 @@ class TestTint:
             "description": "thd",
             "elements": {
                 "e1": {
-                    "description": "tlist",
+                    "description": "tcons",
                     "elements": {
                         "e1" : {
                             "description": "tbool",
                             "elements": {"e1": "true"}
                         },
                         "e2" : {
-                            "description": "tlist",
+                            "description": "tcons",
                             "elements": {
                                 "e1": {
                                     "description": "tint",

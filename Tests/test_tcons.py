@@ -18,7 +18,7 @@ class TestTint:
                             "elements": {"e1": "1"}
                         },
                         "e2" : {
-                            "description": "tlist",
+                            "description": "tcons",
                             "elements": {
                                 "e1": {
                                     "description": "tempty",
@@ -33,7 +33,7 @@ class TestTint:
                     }
                 },
                 "e2": {
-                    "description": "tlist",
+                    "description": "tcons",
                     "elements": {
                         "e1" : {
                             "description": "tempty",
@@ -62,7 +62,7 @@ class TestTint:
                             "elements": {"e1": "1"}
                         },
                         "e2" : {
-                            "description": "tlist",
+                            "description": "tcons",
                             "elements": {
                                 "e1": {
                                     "description": "tempty",
@@ -99,7 +99,7 @@ class TestTint:
                     "elements": {"e1": "1"}
                 },
                 "e2": {
-                    "description": "tlist",
+                    "description": "tcons",
                     "elements": {
                         "e1" : {
                             "description": "tint",
@@ -125,7 +125,7 @@ class TestTint:
                     "elements": {"e1": "1"}
                 },
                 "e2": {
-                    "description": "tlist",
+                    "description": "tcons",
                     "elements": {
                         "e1" : {
                             "description": "tbool",

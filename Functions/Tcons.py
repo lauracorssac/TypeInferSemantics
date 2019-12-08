@@ -2,7 +2,7 @@ from Definitions.types import TYPE
 
 # Input example:
 #
-# cons 1 [2]
+# cons 1 (cons 2 empty)
 #
 # node = {
 #     "description": "tcons",
@@ -12,7 +12,7 @@ from Definitions.types import TYPE
 #             "elements": {"e1": "1"}
 #         },
 #         "e2" : {
-#             "description": "tlist",
+#             "description": "tcons",
 #             "elements": {
 #                 "e1": {
 #                     "description": "tint",
@@ -54,14 +54,20 @@ def t_cons(environment, node):
     new = node["elements"]["e1"]
     list = node["elements"]["e2"]
     list_type = infer_type(environment, list)
-    new_type = infer_type(environment, new)
 
     if isList(list_type): # consider case that is cons to a empty list!
+        new_type = infer_type(environment, new)
+        empty = TYPE.LIST(TYPE.UNDEFINED)
         list_of = innerType(list_type)
 
-        if list_of == new_type: # both are undefined (cons undef empty) or tail not empty
+        if new_type == empty and list_type == empty:
+            return empty
+        elif (new_type == list_of) or (new_type == TYPE.UNDEFINED):
             return list_type
-
+        elif new_type != empty and TYPE.UNDEFINED in list_type:
+            return TYPE.LIST(new_type)
+        elif list_of == new_type: # both are undefined (cons undef empty) or tail not empty
+            return list_type
         elif list_of == TYPE.UNDEFINED: # tail is empty but head is defined
             return TYPE.LIST(new_type)
 
