@@ -8,8 +8,11 @@ from Functions.Tint import *
 from Functions.Tbool import *
 from Functions.Tapp import *
 from Functions.Traise import *
-from Functions.Tlist import *
 from Functions.Tempty import *
+from Functions.Thd import *
+from Functions.Tcons import *
+from Functions.Ttl import *
+from Functions.Tisempty import *
 from Functions.TopArithm import *
 from Functions.TopLogic import *
 from Functions.Tif import *
@@ -21,8 +24,11 @@ rules_dictionary = {
     'tint': t_int,
     'tbool': t_bool,
     'tapp': t_app,
+    'thd': t_hd,
+    'tcons': t_cons,
+    'ttl': t_tl,
+    'tisempty': t_isempty,
     'traise': t_raise,
-    'tlist': t_list,
     'tempty': t_empty,
     'tarithm': t_arithm,
     'tlogic': t_logic,

@@ -2,20 +2,20 @@ from Definitions.types import TYPE
 
 # Input example:
 #
-# isempty [1, 2]
+# isempty cons 1 (cons 2 empty)
 #
 # node = {
 #   "description": "tisempty"
 #   "elements": {
 #        "e1": {
-#            "description": "tlist",
+#            "description": "tcons",
 #            "elements": {
 #                 "e1" : {
 #                       "description": "tint",
 #                       "elements": {"e1": "1"}
 #                 },
 #                 "e2": {
-#                      "description": "tlist",
+#                      "description": "tcons",
 #                      "elements": {
 #                           "e1": {
 #                                "description": "tint",

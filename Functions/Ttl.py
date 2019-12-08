@@ -2,7 +2,7 @@ from Definitions.types import TYPE
 
 # Input example:
 #
-# isempty [1, 2]
+# thd cons 1 (cons 2 empty)
 #
 # node = {
 #   "description": "ttl"
