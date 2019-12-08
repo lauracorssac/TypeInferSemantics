@@ -12,6 +12,9 @@ from Functions.Thd import *
 from Functions.Tcons import *
 from Functions.Ttl import *
 from Functions.Tisempty import *
+from Functions.TopArithm import *
+from Functions.TopLogic import *
+from Functions.Tif import *
 
 rules_dictionary = {
     'tfun': t_fun,
@@ -24,7 +27,10 @@ rules_dictionary = {
     'thd': t_hd,
     'tcons': t_cons,
     'ttl': t_tl,
-    'tisempty': t_isempty
+    'tisempty': t_isempty,
+    'tarithm': t_arithm,
+    'tlogic': t_logic,
+    'tif': t_if
 }
 
 def infer_type(environment, node):
