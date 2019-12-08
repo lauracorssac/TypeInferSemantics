@@ -14,7 +14,21 @@ class TestTint:
             }
         }
 
-    def test_tint_error(self):
+        environment = {}
+        assert t_int(environment, node) == TYPE.INT
+
+    def test_tint_ok_giant_number(self):
+        node = {
+            "description": "tint",
+            "elements": {
+                "e1": "789637895059"
+            }
+        }
+
+        environment = {}
+        assert t_int(environment, node) == TYPE.INT
+
+    def test_tint_error_boolean(self):
         node = {
             "description": "tint",
             "elements": {
@@ -23,4 +37,15 @@ class TestTint:
         }    
     
         environment = {}
-        assert t_int(environment, node) == TYPE.INT 
+        assert t_int(environment, node) == TYPE.ERROR 
+
+    def test_tint_error_symbol(self):
+        node = {
+            "description": "tint",
+            "elements": {
+                "e1": "#$%¨&*()"
+            }
+        }    
+    
+        environment = {}
+        assert t_int(environment, node) == TYPE.ERROR 
