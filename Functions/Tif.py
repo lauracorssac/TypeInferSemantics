@@ -7,9 +7,24 @@ from Definitions.types import TYPE
 # node = {
 #   "description": "tif"
 #   "elements": {
-#        "e1": "TYPE.BOOL",
-#        "e2": TYPE,
-#        "e3": TYPE
+#        "e1": {
+#            "description": "tbool",
+#            "elements":{
+#                "e1": "true"
+#            }
+#        },
+#        "e2": {
+#            "description": "tint",
+#            "elements":{
+#                "e1": "700"
+#            }
+#        },
+#        "e3": {
+#            "description": "tint",
+#            "elements":{
+#                "e1": "40"
+#            }
+#         }
 #    }
 #            
 # }
@@ -17,7 +32,7 @@ from Definitions.types import TYPE
 # environment = {}
 #
 # Return:
-#   TYPE
+#   TYPE.INT (no caso deste exemplo), na realidade o retorno é o tipo do elemento e1 ou e2
 #
 
 def validParameters(environment, node):
