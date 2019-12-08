@@ -101,6 +101,87 @@ class TestTif:
         environment = {}
         assert t_if(environment, node) == TYPE.FUNC(TYPE.INT, TYPE.INT)
 
+    def test_tif_ok_raise(self):
+        node = {
+            "description": "tif",
+            "elements": {
+                  "e1": {
+                      "description": "traise",
+                      "elements":{
+                          "e1": "raise"
+                      }
+                   },
+                  "e2": {
+                      "description": "tint",
+                      "elements":{
+                          "e1": "40"
+                      }
+                   },
+                  "e3": {
+                      "description": "tint",
+                      "elements":{
+                          "e1": "70"
+                      }
+                   }
+            }
+        }
+        environment = {}
+        assert t_if(environment, node) == TYPE.INT
+
+    def test_tif_ok_raise_2_elements(self):
+        node = {
+            "description": "tif",
+            "elements": {
+                  "e1": {
+                      "description": "traise",
+                      "elements":{
+                          "e1": "raise"
+                      }
+                   },
+                  "e2": {
+                      "description": "tint",
+                      "elements":{
+                          "e1": "40"
+                      }
+                   },
+                  "e3": {
+                      "description": "traise",
+                      "elements":{
+                          "e1": "raise"
+                      }
+                   }
+            }
+        }
+        environment = {}
+        assert t_if(environment, node) == TYPE.INT
+
+    def test_tif_ok_raise_3_elements(self):
+        node = {
+            "description": "tif",
+            "elements": {
+                  "e1": {
+                      "description": "traise",
+                      "elements":{
+                          "e1": "raise"
+                      }
+                   },
+                  "e2": {
+                      "description": "traise",
+                      "elements":{
+                          "e1": "raise"
+                      }
+                   },
+                  "e3": {
+                      "description": "traise",
+                      "elements":{
+                          "e1": "raise"
+                      }
+                   }
+            }
+        }
+        environment = {}
+        assert t_if(environment, node) == TYPE.INT
+
     def test_tif_error_not_boolean(self):
         node = {
             "description": "tif",

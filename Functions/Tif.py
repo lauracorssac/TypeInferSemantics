@@ -55,8 +55,12 @@ def t_if(environment, node):
     tipo2 = infer_type(environment, elem2)
     tipo3 = infer_type(environment, elem3)
 
-    if (tipo1 == TYPE.BOOL):
+    if (tipo1 == TYPE.BOOL) or (tipo1 == TYPE.UNDEFINED):
         if(tipo2 == tipo3):            
+            return tipo2
+        elif (tipo2 == TYPE.UNDEFINED):
+            return tipo3
+        elif (tipo3 == TYPE.UNDEFINED):
             return tipo2
         else:
             return TYPE.ERROR
