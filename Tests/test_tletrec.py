@@ -161,7 +161,7 @@ class TestTLetRec:
         }
 
         # Input: let rec f: INT -> BOOL = (fn x: INT => x) in f 4
-        # Output: BOOL
+        # Output: ERROR
 
         assert parameters_are_valid({}, node) == True
         assert t_letrec({}, node) == TYPE.ERROR
@@ -178,7 +178,7 @@ class TestTLetRec:
                    }
                },
                "e2": {
-                   "description": "Tbool",
+                   "description": "tbool",
                    "elements": {
                        "e1" : "True"
                    }
@@ -215,6 +215,7 @@ class TestTLetRec:
 
         assert parameters_are_valid({}, node) == True
         assert t_letrec({}, node) == TYPE.ERROR
+
 
     def test_t_letrec_1(self):
 
