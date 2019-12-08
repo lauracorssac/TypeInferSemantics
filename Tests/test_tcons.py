@@ -287,6 +287,103 @@ class TestTcons:
         environment = {}
         assert t_cons(environment, node) == TYPE.LIST(TYPE.INT)
 
+    def test_tcons_nested_bools_ok(self):
+        node = {
+            "description": "tcons",
+            "elements": {
+                "e1": {
+                    "description": "tcons",
+                    "elements": {
+                        "e1" : {
+                            "description": "tbool",
+                            "elements": {"e1": "true"}
+                        },
+                        "e2" : {
+                            "description": "tempty",
+                            "elements": { "e1": "empty"}
+                        }
+                    }
+                },
+                "e2": {
+                    "description": "tcons",
+                    "elements": {
+                        "e1" : {
+                            "description": "tcons",
+                            "elements": {
+                                "e1" : {
+                                    "description": "tbool",
+                                    "elements": {"e1": "false"}
+                                },
+                                "e2" : {
+                                    "description": "tempty",
+                                    "elements": { "e1": "empty"}
+                                }
+                            }
+                        },
+                        "e2" : {
+                            "description": "tempty",
+                            "elements": { "e1": "empty"}
+                        }
+                    }
+                }
+            }
+        }
+        environment = {}
+        assert t_cons(environment, node) == TYPE.LIST(TYPE.LIST(TYPE.BOOL))
+
+    def test_tcons_error_2types_nested(self):
+        node = {
+            "description": "tcons",
+            "elements": {
+                "e1": {
+                    "description": "tcons",
+                    "elements": {
+                        "e1" : {
+                            "description": "tint",
+                            "elements": {"e1": "1"}
+                        },
+                        "e2" : {
+                            "description": "tcons",
+                            "elements": {
+                                "e1": {
+                                    "description": "tint",
+                                    "elements": {"e1": "2"}
+                                },
+                                "e2": {
+                                    "description": "tempty",
+                                    "elements": {"e1": "empty"}
+                                }
+                            }
+                        }
+                    }
+                },
+                "e2": {
+                    "description": "tcons",
+                    "elements": {
+                        "e1" : {
+                            "description": "tbool",
+                            "elements": {"e1": "true"}
+                        },
+                        "e2" : {
+                            "description": "tcons",
+                            "elements": {
+                                "e1": {
+                                    "description": "tbool",
+                                    "elements": {"e1": "false"}
+                                },
+                                "e2": {
+                                    "description": "tempty",
+                                    "elements": {"e1": "empty"}
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        environment = {}
+        assert t_cons(environment, node) == TYPE.ERROR
+
     def test_tcons_error_2types(self):
         node = {
             "description": "tcons",
@@ -314,45 +411,45 @@ class TestTcons:
         assert t_cons(environment, node) == TYPE.ERROR
 
 
-        def test_tcons_error_empty_first(self):
-            node = {
-                "description": "tcons",
-                "elements": {
-                    "e1": {
-                        "description": "tempty",
-                        "elements": {"e1": "empty"}
-                    },
-                    "e2": {
-                        "description": "tcons",
-                        "elements": {
-                            "e1" : {
-                                "description": "tbool",
-                                "elements": {"e1": "true"}
-                            },
-                            "e2" : {
-                                "description": "tempty",
-                                "elements": {"e1": "empty"}
-                            }
+    def test_tcons_error_empty_first(self):
+        node = {
+            "description": "tcons",
+            "elements": {
+                "e1": {
+                    "description": "tempty",
+                    "elements": {"e1": "empty"}
+                },
+                "e2": {
+                    "description": "tcons",
+                    "elements": {
+                        "e1" : {
+                            "description": "tbool",
+                            "elements": {"e1": "true"}
+                        },
+                        "e2" : {
+                            "description": "tempty",
+                            "elements": {"e1": "empty"}
                         }
                     }
                 }
             }
-            environment = {}
-            assert t_cons(environment, node) == TYPE.ERROR
+        }
+        environment = {}
+        assert t_cons(environment, node) == TYPE.ERROR
 
-        def test_tcons_error_e2_not_list(self):
-            node = {
-                "description": "tcons",
-                "elements": {
-                    "e1": {
-                        "description": "tint",
-                        "elements": {"e1": "1"}
-                    },
-                    "e2": {
-                        "description": "tint",
-                        "elements": {"e1" : "2"}
-                    }
+    def test_tcons_error_e2_not_list(self):
+        node = {
+            "description": "tcons",
+            "elements": {
+                "e1": {
+                    "description": "tint",
+                    "elements": {"e1": "1"}
+                },
+                "e2": {
+                    "description": "tint",
+                    "elements": {"e1" : "2"}
                 }
             }
-            environment = {}
-            assert t_cons(environment, node) == TYPE.ERROR
+        }
+        environment = {}
+        assert t_cons(environment, node) == TYPE.ERROR
