@@ -7,6 +7,7 @@ from Functions.Tlet import *
 from Functions.Tint import *
 from Functions.Tbool import *
 from Functions.Tapp import *
+from Functions.Traise import *
 from Functions.Tlist import *
 from Functions.Tempty import *
 from Functions.TopArithm import *
@@ -20,6 +21,7 @@ rules_dictionary = {
     'tint': t_int,
     'tbool': t_bool,
     'tapp': t_app,
+    'traise': t_raise,
     'tlist': t_list,
     'tempty': t_empty
     'tarithm': t_arithm,
