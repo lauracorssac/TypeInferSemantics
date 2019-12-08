@@ -23,7 +23,7 @@ rules_dictionary = {
     'tapp': t_app,
     'traise': t_raise,
     'tlist': t_list,
-    'tempty': t_empty
+    'tempty': t_empty,
     'tarithm': t_arithm,
     'tlogic': t_logic,
     'tif': t_if
