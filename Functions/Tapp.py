@@ -35,11 +35,14 @@ def t_app(environment, node):
         return TYPE.ERROR
 
     from main import infer_type
-    result = TYPE.ERROR
+
     term = infer_type(environment, node["elements"]["e1"])
+    if term == TYPE.UNDEFINED:
+        return TYPE.ERROR
+
     expected_parameter, ending_index = get_expected_parameter(term)
     received_parameter = infer_type(environment, node["elements"]["e2"])
+
     if expected_parameter == received_parameter or received_parameter ==  TYPE.UNDEFINED:
         result = apply_parameter(term, ending_index)
-
-    return result
+        return result
