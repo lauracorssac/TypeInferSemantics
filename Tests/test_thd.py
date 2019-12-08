@@ -68,6 +68,68 @@ class TestThd:
         environment = {}
         assert t_hd(environment, node) == TYPE.INT
 
+    def test_thd_raiseint_ok(self):
+        node = {
+            "description": "thd",
+            "elements": {
+                "e1": {
+                    "description": "tcons",
+                    "elements": {
+                        "e1" : {
+                            "description": "traise",
+                            "elements": {"e1": "raise"}
+                        },
+                        "e2" : {
+                            "description": "tcons",
+                            "elements": {
+                                "e1": {
+                                    "description": "tint",
+                                    "elements": {"e1": "2"}
+                                },
+                                "e2": {
+                                    "description": "tempty",
+                                    "elements": {"e1": "empty"}
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        environment = {}
+        assert t_hd(environment, node) == TYPE.INT
+
+    def test_thd_raiseint2_ok(self):
+        node = {
+            "description": "thd",
+            "elements": {
+                "e1": {
+                    "description": "tcons",
+                    "elements": {
+                        "e1" : {
+                            "description": "tint",
+                            "elements": {"e1": "1"}
+                        },
+                        "e2" : {
+                            "description": "tcons",
+                            "elements": {
+                                "e1": {
+                                    "description": "traise",
+                                    "elements": {"e1": "raise"}
+                                },
+                                "e2": {
+                                    "description": "tempty",
+                                    "elements": {"e1": "empty"}
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        environment = {}
+        assert t_hd(environment, node) == TYPE.INT
+
     def test_thd_empty_ok(self):
         node = {
           "description": "thd",
