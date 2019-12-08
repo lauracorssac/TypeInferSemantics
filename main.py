@@ -7,6 +7,15 @@ from Functions.Tlet import *
 from Functions.Tint import *
 from Functions.Tbool import *
 from Functions.Tapp import *
+from Functions.Traise import *
+from Functions.Tempty import *
+from Functions.Thd import *
+from Functions.Tcons import *
+from Functions.Ttl import *
+from Functions.Tisempty import *
+from Functions.TopArithm import *
+from Functions.TopLogic import *
+from Functions.Tif import *
 
 rules_dictionary = {
     'tfun': t_fun,
@@ -14,7 +23,16 @@ rules_dictionary = {
     'tlet': t_let,
     'tint': t_int,
     'tbool': t_bool,
-    'tapp': t_app
+    'tapp': t_app,
+    'thd': t_hd,
+    'tcons': t_cons,
+    'ttl': t_tl,
+    'tisempty': t_isempty,
+    'traise': t_raise,
+    'tempty': t_empty,
+    'tarithm': t_arithm,
+    'tlogic': t_logic,
+    'tif': t_if
 }
 
 def infer_type(environment, node):
