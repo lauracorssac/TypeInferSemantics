@@ -343,17 +343,8 @@ class TestTcons:
                             "elements": {"e1": "1"}
                         },
                         "e2" : {
-                            "description": "tcons",
-                            "elements": {
-                                "e1": {
-                                    "description": "tint",
-                                    "elements": {"e1": "2"}
-                                },
-                                "e2": {
-                                    "description": "tempty",
-                                    "elements": {"e1": "empty"}
-                                }
-                            }
+                            "description": "tempty",
+                            "elements": { "e1": "empty"}
                         }
                     }
                 },
@@ -361,21 +352,21 @@ class TestTcons:
                     "description": "tcons",
                     "elements": {
                         "e1" : {
-                            "description": "tbool",
-                            "elements": {"e1": "true"}
-                        },
-                        "e2" : {
                             "description": "tcons",
                             "elements": {
-                                "e1": {
+                                "e1" : {
                                     "description": "tbool",
                                     "elements": {"e1": "false"}
                                 },
-                                "e2": {
+                                "e2" : {
                                     "description": "tempty",
-                                    "elements": {"e1": "empty"}
+                                    "elements": { "e1": "empty"}
                                 }
                             }
+                        },
+                        "e2" : {
+                            "description": "tempty",
+                            "elements": { "e1": "empty"}
                         }
                     }
                 }
