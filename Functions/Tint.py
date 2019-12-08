@@ -26,8 +26,12 @@ def t_int(environment, node):
         return TYPE.ERROR
 
     from main import infer_type
-
-    value = int(node['elements']['e1'])
+ 
+    try:
+        value = int(node['elements']['e1'])
+ 
+    except ValueError:
+        value = TYPE.ERROR    
 
     if type(value) == int:
         return TYPE.INT
