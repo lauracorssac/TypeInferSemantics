@@ -4,7 +4,7 @@ sys.path.insert(1, '../')
 from Functions.Tisempty import *
 from Definitions.types import TYPE
 
-class TestTint:
+class TestTisempty:
 
     def test_tisempty_bool_ok(self):
         node = {
