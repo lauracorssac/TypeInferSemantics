@@ -4,7 +4,7 @@ sys.path.insert(1, '../')
 from Functions.Tempty import *
 from Definitions.types import TYPE
 
-class TestTint:
+class TestTempty:
 
     def test_tempty_ok(self):
         node = {

@@ -62,12 +62,15 @@ def t_cons(environment, node):
 
         if new_type == empty and list_type == empty:
             return empty
+        elif (new_type == TYPE.UNDEFINED) and (list_type == empty):
+            return TYPE.LIST(TYPE.LIST(TYPE.UNDEFINED))
+        # both are undefined (cons undef empty) or tail not empty
         elif (new_type == list_of) or (new_type == TYPE.UNDEFINED):
             return list_type
+        elif TYPE.UNDEFINED in new_type and TYPE.UNDEFINED in list_type:
+            return new_type
         elif new_type != empty and TYPE.UNDEFINED in list_type:
             return TYPE.LIST(new_type)
-        elif list_of == new_type: # both are undefined (cons undef empty) or tail not empty
-            return list_type
         elif list_of == TYPE.UNDEFINED: # tail is empty but head is defined
             return TYPE.LIST(new_type)
 

@@ -4,7 +4,7 @@ sys.path.insert(1, '../')
 from Functions.Ttl import *
 from Definitions.types import TYPE
 
-class TestTint:
+class TestTtl:
 
     def test_ttl_bool_ok(self):
         node = {
@@ -138,6 +138,19 @@ class TestTint:
                             }
                         }
                     }
+                }
+            }
+        }
+        environment = {}
+        assert t_tl(environment, node) == TYPE.ERROR
+
+    def test_ttl_error_int(self):
+        node = {
+            "description": "thd",
+            "elements": {
+                "e1": {
+                    "description": "tint",
+                    "elements": { "e1": "2"}
                 }
             }
         }
