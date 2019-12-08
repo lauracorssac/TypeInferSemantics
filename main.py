@@ -8,6 +8,11 @@ from Functions.Tint import *
 from Functions.Tbool import *
 from Functions.Tapp import *
 from Functions.Traise import *
+from Functions.Tlist import *
+from Functions.Tempty import *
+from Functions.TopArithm import *
+from Functions.TopLogic import *
+from Functions.Tif import *
 
 rules_dictionary = {
     'tfun': t_fun,
@@ -16,7 +21,12 @@ rules_dictionary = {
     'tint': t_int,
     'tbool': t_bool,
     'tapp': t_app,
-    'traise': t_raise
+    'traise': t_raise,
+    'tlist': t_list,
+    'tempty': t_empty
+    'tarithm': t_arithm,
+    'tlogic': t_logic,
+    'tif': t_if
 }
 
 def infer_type(environment, node):
