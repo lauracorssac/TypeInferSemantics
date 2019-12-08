@@ -180,7 +180,7 @@ class TestTif:
             }
         }
         environment = {}
-        assert t_if(environment, node) == TYPE.INT
+        assert t_if(environment, node) == TYPE.UNDEFINED
 
     def test_tif_error_not_boolean(self):
         node = {

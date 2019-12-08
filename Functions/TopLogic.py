@@ -47,8 +47,16 @@ def t_logic(environment, node):
     tipo1 = infer_type(environment, elem1)
     tipo2 = infer_type(environment, elem2)
 
-    if (tipo1 == TYPE.INT) and (tipo2 == TYPE.INT):
-      if (node["elements"]["e3"] == ">") or (node["elements"]["e3"] == "<") or (node["elements"]["e3"] == "==") or (node["elements"]["e3"] == "=<") or (node["elements"]["e3"] == ">="):
+    if (((tipo1 == TYPE.INT) and (tipo2 == TYPE.INT)) 
+    or ((tipo1 == TYPE.UNDEFINED) and (tipo2 == TYPE.INT)) 
+    or ((tipo1 == TYPE.INT) and (tipo2 == TYPE.UNDEFINED)) 
+    or ((tipo1 == TYPE.UNDEFINED) and (tipo2 == TYPE.UNDEFINED))):
+      if ((node["elements"]["e3"] == ">") 
+      or (node["elements"]["e3"] == "<") 
+      or (node["elements"]["e3"] == "==") 
+      or (node["elements"]["e3"] == "!=") 
+      or (node["elements"]["e3"] == "=<") 
+      or (node["elements"]["e3"] == ">=")):
         return TYPE.BOOL
       else:
         return TYPE.ERROR        

@@ -72,6 +72,72 @@ class TestTArithm:
         environment = {}
         assert t_arithm(environment, node) == TYPE.INT
 
+    def test_tarithm_ok_raise_e1(self):
+        node = {
+            "description": "tarithm",
+            "elements": {
+                "e1": {
+                    "description": "traise",
+                    "elements": {
+                        "e1": "raise"
+                    }
+                },
+                "e2": {
+                    "description": "tint",
+                    "elements": {
+                        "e1": "3"
+                    }
+                },
+                "e3": "*"
+            }    
+        }        
+        environment = {}
+        assert t_arithm(environment, node) == TYPE.INT
+
+    def test_tarithm_ok_raise_e2(self):
+        node = {
+            "description": "tarithm",
+            "elements": {
+                "e1": {
+                    "description": "tint",
+                    "elements": {
+                        "e1": "5"
+                    }
+                },
+                "e2": {
+                    "description": "traise",
+                    "elements": {
+                        "e1": "raise"
+                    }
+                },
+                "e3": "-"
+            }    
+        }        
+        environment = {}
+        assert t_arithm(environment, node) == TYPE.INT
+
+    def test_tarithm_ok_raise_e1_e2(self):
+        node = {
+            "description": "tarithm",
+            "elements": {
+                "e1": {
+                    "description": "traise",
+                    "elements": {
+                        "e1": "raise"
+                    }
+                },
+                "e2": {
+                    "description": "traise",
+                    "elements": {
+                        "e1": "raise"
+                    }
+                },
+                "e3": "+"
+            }    
+        }        
+        environment = {}
+        assert t_arithm(environment, node) == TYPE.INT    
+
     def test_tarithm_error_type(self):
         node = {
             "description": "tarithm",

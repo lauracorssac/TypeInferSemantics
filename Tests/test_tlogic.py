@@ -72,6 +72,28 @@ class TestTLogic:
         environment = {}
         assert t_logic(environment, node) == TYPE.BOOL
 
+    def test_tlogic_ok_different(self):
+        node = {
+            "description": "tlogic",
+            "elements": {
+                "e1": {
+                    "description": "tint",
+                    "elements": {
+                        "e1": "50"
+                    }
+                },
+                "e2": {
+                    "description": "tint",
+                    "elements": {
+                        "e1": "2"
+                    }
+                },
+                "e3": "!="
+            }    
+        }        
+        environment = {}
+        assert t_logic(environment, node) == TYPE.BOOL
+
     def test_tlogic_ok_greater_equal(self):
         node = {
             "description": "tlogic",
@@ -111,6 +133,72 @@ class TestTLogic:
                     }
                 },
                 "e3": "=<"
+            }    
+        }        
+        environment = {}
+        assert t_logic(environment, node) == TYPE.BOOL
+
+    def test_tlogic_ok_raise_e1(self):
+        node = {
+            "description": "tlogic",
+            "elements": {
+                "e1": {
+                    "description": "traise",
+                    "elements": {
+                        "e1": "raise"
+                    }
+                },
+                "e2": {
+                    "description": "tint",
+                    "elements": {
+                        "e1": "2"
+                    }
+                },
+                "e3": ">"
+            }    
+        }        
+        environment = {}
+        assert t_logic(environment, node) == TYPE.BOOL
+
+    def test_tlogic_ok_raise_e2(self):
+        node = {
+            "description": "tlogic",
+            "elements": {
+                "e1": {
+                    "description": "tint",
+                    "elements": {
+                        "e1": "200"
+                    }
+                },
+                "e2": {
+                    "description": "traise",
+                    "elements": {
+                        "e1": "raise"
+                    }
+                },
+                "e3": "!="
+            }    
+        }        
+        environment = {}
+        assert t_logic(environment, node) == TYPE.BOOL
+
+    def test_tlogic_ok_raise_e1_e2(self):
+        node = {
+            "description": "tlogic",
+            "elements": {
+                "e1": {
+                    "description": "traise",
+                    "elements": {
+                        "e1": "raise"
+                    }
+                },
+                "e2": {
+                    "description": "traise",
+                    "elements": {
+                        "e1": "raise"
+                    }
+                },
+                "e3": "!="
             }    
         }        
         environment = {}
