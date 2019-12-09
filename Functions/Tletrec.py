@@ -61,9 +61,12 @@ def t_letrec(environment, term):
 
     environment[function_name] = TYPE.FUNC(input_type, output_type)
     type_e2 = infer_type(environment, e2)
-    print("type e2", type_e2)
+
     environment[param_name] = input_type
     type_e1 = infer_type(environment, e1)
+
+    if type_e2 == TYPE.ERROR or type_e1 == TYPE.ERROR:
+        return TYPE.ERROR
 
     if type_e1 == output_type or type_e1 == TYPE.UNDEFINED:
         return type_e2
