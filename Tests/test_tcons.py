@@ -155,41 +155,57 @@ class TestTcons:
         environment = {}
         assert t_cons(environment, node) == TYPE.LIST(TYPE.LIST(TYPE.UNDEFINED))
 
-    #DEBUG
-    # def test_tcons_nested_empty_ok(self):
-    #     node = {
-    #         "description": "tcons",
-    #         "elements": {
-    #             "e1": {
-    #                 "description": "tcons",
-    #                 "elements": {
-    #                     "e1" : {
-    #                         "description": "tempty",
-    #                         "elements": {"e1": "empty"}
-    #                     },
-    #                     "e2" : {
-    #                         "description": "tcons",
-    #                         "elements": {
-    #                             "e1": {
-    #                                 "description": "tempty",
-    #                                 "elements": {"e1": "empty"}
-    #                             },
-    #                             "e2": {
-    #                                 "description": "tempty",
-    #                                 "elements": {"e1": "empty"}
-    #                             }
-    #                         }
-    #                     }
-    #                 }
-    #             },
-    #             "e2": {
-    #                 "description": "tempty",
-    #                 "elements": {"e1" : "empty"}
-    #             }
-    #         }
-    #     }
-    #     environment = {}
-    #     assert t_cons(environment, node) == TYPE.LIST(TYPE.LIST(TYPE.UNDEFINED))
+    def test_tcons_nested_raise3_ok(self):
+        node = {
+            "description": "tcons",
+            "elements": {
+                "e1": {
+                    "description": "traise",
+                    "elements": {"e1": "raise"}
+                },
+                "e2": {
+                    "description": "tempty",
+                    "elements": {"e1": "empty"}
+                }
+            }
+        }
+        environment = {}
+        assert t_cons(environment, node) == TYPE.LIST(TYPE.UNDEFINED)
+
+    def test_tcons_nested_empty_ok(self):
+        node = {
+            "description": "tcons",
+            "elements": {
+                "e1": {
+                    "description": "tcons",
+                    "elements": {
+                        "e1" : {
+                            "description": "tempty",
+                            "elements": {"e1": "empty"}
+                        },
+                        "e2" : {
+                            "description": "tcons",
+                            "elements": {
+                                "e1": {
+                                    "description": "tempty",
+                                    "elements": {"e1": "empty"}
+                                },
+                                "e2": {
+                                    "description": "tempty",
+                                    "elements": {"e1": "empty"}
+                                }
+                            }
+                        }
+                    }
+                },
+                "e2": {
+                    "description": "tempty",
+                    "elements": {"e1" : "empty"}
+                }
+            }
+        }
+        environment = {}
+        assert t_cons(environment, node) == TYPE.LIST(TYPE.EMPTY)
 
     def test_tcons_nested_raiseint_ok(self):
         node = {
@@ -409,6 +425,50 @@ class TestTcons:
         }
         environment = {}
         assert t_cons(environment, node) == TYPE.LIST(TYPE.LIST(TYPE.BOOL))
+
+    def test_tcons_fun_ok(self):
+        node = {
+            "description": "tcons",
+            "elements": {
+                "e1": {
+                    "description": "tfun",
+                    "elements": {
+                        "e1": "x",
+                        "e2": TYPE.INT,
+                        "e3": {
+                            "description": "tbool",
+                            "elements": {
+                                "e1": "true"
+                            }
+                        }
+                    }
+                },
+                "e2": {
+                    "description": "tcons",
+                    "elements": {
+                        "e1": {
+                            "description": "tfun",
+                            "elements": {
+                                "e1": "x",
+                                "e2": TYPE.INT,
+                                "e3": {
+                                    "description": "tbool",
+                                    "elements": {
+                                        "e1": "false"
+                                    }
+                                }
+                            }
+                        },
+                        "e2": {
+                            "description": "tempty",
+                            "elements": {"e1": "empty"}
+                        }
+                    }
+                }
+            }
+        }
+        environment = {}
+        assert t_cons(environment, node) == TYPE.LIST(TYPE.FUNC(TYPE.INT, TYPE.BOOL))
 
     def test_tcons_error_2types_nested(self):
         node = {
