@@ -408,6 +408,23 @@ class TestTcons:
         environment = {}
         assert t_cons(environment, node) == TYPE.LIST(TYPE.INT)
 
+    def test_tcons_int_single_ok(self):
+        node = {
+            "description": "tcons",
+            "elements": {
+                "e1": {
+                    "description": "tint",
+                    "elements": {"e1": "1"}
+                },
+                "e2" : {
+                    "description": "tempty",
+                    "elements": {"e1": "empty"}
+                }
+            }
+        }
+        environment = {}
+        assert t_cons(environment, node) == TYPE.LIST(TYPE.INT)
+
     def test_tcons_nested_bools_ok(self):
         node = {
             "description": "tcons",
