@@ -172,6 +172,32 @@ class TestTcons:
         environment = {}
         assert t_cons(environment, node) == TYPE.LIST(TYPE.UNDEFINED)
 
+    def test_tcons_nested_raise4_ok(self):
+        node = {
+            "description": "tcons",
+            "elements": {
+                "e1": {
+                    "description": "tcons",
+                    "elements": {
+                        "e1" : {
+                            "description": "traise",
+                            "elements": {"e1": "raise"}
+                        },
+                        "e2" : {
+                            "description": "tempty",
+                            "elements": {"e1": "empty"}
+                        }
+                    }
+                },
+                "e2": {
+                    "description": "tempty",
+                    "elements": {"e1" : "empty"}
+                }
+            }
+        }
+        environment = {}
+        assert t_cons(environment, node) == TYPE.LIST(TYPE.LIST(TYPE.UNDEFINED))
+
     def test_tcons_nested_empty_ok(self):
         node = {
             "description": "tcons",

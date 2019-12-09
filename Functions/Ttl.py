@@ -55,8 +55,8 @@ def t_tl(environment, node):
     from main import infer_type
     list = node["elements"]["e1"]
     list_type = infer_type(environment, list)
-    if isList(list_type): # e2(tail) is validated in the infer_type of the list
-        return list_type # if tail is empty, it returns the type of the list!
+    if isList(list_type):
+        return list_type 
 
     else:
         return TYPE.ERROR
