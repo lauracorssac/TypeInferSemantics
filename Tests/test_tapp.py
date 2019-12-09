@@ -274,3 +274,37 @@ class TestTApp:
         environment = {}
 
         assert t_app(environment, node) == TYPE.BOOL
+
+
+    def test_tapp_raise_paramater_ok(self):
+        node2 = {
+            "description": "tfun",
+            "elements": {
+                "e1": "x",
+                "e2": TYPE.INT,
+                "e3": {
+                    "description": "tbool",
+                    "elements": {
+                        "e1": "true"
+                    }
+                }
+            }
+        }
+
+        node3 = {
+            "description": "traise",
+            "elements": {
+                "e1": "raise"
+            }
+        }
+
+        node = {
+            "description": "tapp",
+            "elements": {
+                "e1": node2,
+                "e2": node3,
+            }
+        }
+        environment = {}
+
+        assert t_app(environment, node) == TYPE.BOOL

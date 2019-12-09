@@ -4,6 +4,7 @@ import collections
 from Functions.Tfun import *
 from Functions.Tvar import *
 from Functions.Tlet import *
+from Functions.Tletrec import *
 from Functions.Tint import *
 from Functions.Tbool import *
 from Functions.Tapp import *
@@ -32,7 +33,8 @@ rules_dictionary = {
     'tempty': t_empty,
     'tarithm': t_arithm,
     'tlogic': t_logic,
-    'tif': t_if
+    'tif': t_if,
+    'tletrec': t_letrec
 }
 
 def infer_type(environment, node):
