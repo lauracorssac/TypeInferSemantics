@@ -55,7 +55,7 @@ def t_cons(environment, node):
     list = node["elements"]["e2"]
     list_type = infer_type(environment, list)
 
-    if isList(list_type): # consider case that is cons to a empty list!
+    if isList(list_type):
         new_type = infer_type(environment, new)
         empty = TYPE.LIST(TYPE.EMPTY)
         list_of = innerType(list_type)
@@ -64,12 +64,11 @@ def t_cons(environment, node):
             return empty
         elif TYPE.UNDEFINED in new_type and TYPE.EMPTY in list_type:
             return TYPE.LIST(new_type)
-        # both are undefined (cons undef empty) or tail not empty
         elif (new_type == list_of) or (new_type == TYPE.UNDEFINED):
             return list_type
-        elif new_type != empty and TYPE.EMPTY in list_type: # tail is empty but head is defined
+        elif new_type != empty and TYPE.EMPTY in list_type:
             return TYPE.LIST(new_type)
-        elif new_type != empty and TYPE.UNDEFINED in list_type: # tail is empty but head is defined
+        elif new_type != empty and TYPE.UNDEFINED in list_type:
             return TYPE.LIST(new_type)
 
         else:
