@@ -14,7 +14,7 @@ class TestTempty:
             }
         }
         environment = {}
-        assert t_empty(environment, node) == TYPE.LIST(TYPE.UNDEFINED)
+        assert t_empty(environment, node) == TYPE.LIST(TYPE.EMPTY)
 
     def test_tint_error1(self):
         node = {

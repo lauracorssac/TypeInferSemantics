@@ -88,7 +88,7 @@ class TestTtl:
             }
         }
         environment = {}
-        assert t_tl(environment, node) == TYPE.LIST(TYPE.UNDEFINED)
+        assert t_tl(environment, node) == TYPE.LIST(TYPE.EMPTY)
 
     def test_ttl_single_ok(self):
         node = {

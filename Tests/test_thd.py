@@ -150,7 +150,7 @@ class TestThd:
             }
         }
         environment = {}
-        assert t_hd(environment, node) == TYPE.UNDEFINED
+        assert t_hd(environment, node) == TYPE.EMPTY
 
 
     def test_thd_error_2types(self):
