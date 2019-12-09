@@ -42,42 +42,12 @@ class TestTFun:
         assert t_fun(environment, node) == "(" + TYPE.INT + ")->" + TYPE.BOOL
         assert t_fun(environment, node) == TYPE.FUNC(TYPE.INT, TYPE.BOOL)
 
-        def test_tfun_int_ok(self):
-            node = {
-                "description": "tfun",
-                "elements": {
-                    "e1": "x",
-                    "e2": TYPE.INT,
-                    "e3": {
-                        "description": "tint",
-                        "elements": {
-                            "e1": "5"
-                        }
-                    }
-                }
-            }
-            environment = {}
-            assert t_fun(environment, node) == "(" + TYPE.INT + ")->" + TYPE.INT
-            assert t_fun(environment, node) == TYPE.FUNC(TYPE.INT, TYPE.INT)
-
-    def test_tfun_param_fun_ok(self):
+    def test_tfun_int_ok(self):
         node = {
             "description": "tfun",
             "elements": {
                 "e1": "x",
-                "e2": {
-                    "description": "tfun",
-                    "elements": {
-                        "e1": "x",
-                        "e2": TYPE.INT,
-                        "e3": {
-                            "description": "tbool",
-                            "elements": {
-                                "e1": "true"
-                            }
-                        }
-                    }
-                },
+                "e2": TYPE.INT,
                 "e3": {
                     "description": "tint",
                     "elements": {
@@ -87,40 +57,7 @@ class TestTFun:
             }
         }
         environment = {}
-        assert t_fun(environment, node) == TYPE.FUNC(TYPE.FUNC(TYPE.INT, TYPE.BOOL), TYPE.INT)
+        assert t_fun(environment, node) == "(" + TYPE.INT + ")->" + TYPE.INT
+        assert t_fun(environment, node) == TYPE.FUNC(TYPE.INT, TYPE.INT)
 
-    def test_tfun_full_fun_ok(self):
-        node = {
-            "description": "tfun",
-            "elements": {
-                "e1": "x",
-                "e2": {
-                    "description": "tfun",
-                    "elements": {
-                        "e1": "x",
-                        "e2": TYPE.BOOL,
-                        "e3": {
-                            "description": "tbool",
-                            "elements": {
-                                "e1": "true"
-                            }
-                        }
-                    }
-                },
-                "e3": {
-                    "description": "tfun",
-                    "elements": {
-                        "e1": "x",
-                        "e2": TYPE.INT,
-                        "e3": {
-                            "description": "tint",
-                            "elements": {
-                                "e1": "5"
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        environment = {}
-        assert t_fun(environment, node) == TYPE.FUNC(TYPE.FUNC(TYPE.BOOL, TYPE.BOOL), TYPE.FUNC(TYPE.INT, TYPE.INT))
+
