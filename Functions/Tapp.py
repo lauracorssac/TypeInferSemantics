@@ -1,6 +1,37 @@
 from Definitions.types import TYPE
-import re
 
+# node2 = {
+#     "description": "tfun",
+#     "elements": {
+#         "e1": "x",
+#         "e2": TYPE.INT,
+#         "e3": {
+#             "description": "tbool",
+#             "elements": {
+#                 "e1": "true"
+#             }
+#         }
+#     }
+# }
+#
+# node3 = {
+#     "description": "tint",
+#     "elements": {
+#         "e1": 5
+#     }
+# }
+#
+# node = {
+#     "description": "tapp",
+#     "elements": {
+#         "e1": node2,
+#         "e2": node3,
+#     }
+# }
+# environment = {}
+# Return:
+#   TYPE.BOOL
+#
 
 def validParameters(environment, node):
     if node and "description" in node and "elements" in node and "e1" in node["elements"] and "e2" in node["elements"]:
