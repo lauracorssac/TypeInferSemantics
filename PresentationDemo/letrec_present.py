@@ -1,4 +1,8 @@
-from main import *
+import sys
+sys.path.insert(1, '../')
+
+from Definitions.types import TYPE
+from main import infer_type
 
 param = {
     "description": "tvar",
